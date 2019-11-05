@@ -48,6 +48,15 @@ class Rectangle {
     }
     return false;
   }
+
+  remove() {
+    let x = this.x, y = this.y, width = this.width;
+    let startTime = performance.now();
+    let during = 2000;
+    this.context.clearRect(x, y, width, 500);
+    if (performance.now() - startTime < during)
+      requestAnimationFrame(this.remove.bind(this));
+  }
 }
 
 
